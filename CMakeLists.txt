@@ -3,4 +3,4 @@ project(MY_CP)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(MY_CP main.cpp morning_jogging.cpp ab_palindrome.cpp)
+add_executable(MY_CP       colorful_walk.cpp)
