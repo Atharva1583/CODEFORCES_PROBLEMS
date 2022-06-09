@@ -1,7 +1,3 @@
-//
-// Created by Icon on 07-06-2022.
-//
-
 // CP
 // Atharva's Code
 #include <bits/stdc++.h>
@@ -42,24 +38,32 @@ bool isPrime(ll n){if(n<=1)return false;if(n<=3)return true;if(n%2==0||n%3==0)re
 bool isPowerOfTwo(int n){if(n==0)return false;return (ceil(log2(n)) == floor(log2(n)));}
 bool isPerfectSquare(ll x){if (x >= 0) {ll sr = sqrt(x);return (sr * sr == x);}return false;}
 
+ll dp[1000001];
+
 void solve(){
-    ll n;
-    cin>>n;
-    ll count=0;
-    ll x= 10 -(n%10);
-    while(n!=1){
-        count+=(10-(n%10));
-        n+=(10-(n%10));
-        n/=10;
+    ll n,x;
+    cin>>n>>x;
+    vl a(n);
+    rep(i,0,n){
+        cin>>a[i];
     }
-    cout<<count<<endl;
+    dp[0]=1;
+    rep(i,0,x+1){
+        rep(j,1,n+1){
+            if(i-a[j-1]>=0){
+                dp[i]+=dp[i-a[j-1]];
+                dp[i]=dp[i]%mod;
+            }
+        }
+    }
+    cout<<dp[x]<<endl;
 }
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 
-    ll t;cin>>t;
+    ll t;t=1;
     while (t--){
         solve();
     }

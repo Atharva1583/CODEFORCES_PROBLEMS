@@ -1,7 +1,3 @@
-//
-// Created by Icon on 07-06-2022.
-//
-
 // CP
 // Atharva's Code
 #include <bits/stdc++.h>
@@ -29,11 +25,15 @@ typedef unordered_map<ll,ll> uml;
 #define rep(i,a,b) for(ll i=a;i<b;i++)
 #define repR(i,a,b) for(ll i=a;i>=b;i--)
 #define all(a) a.begin(),a.end()
+#define inputVec(a,n) rep(i,0,n) {cin>>a[i];}
+#define printVec(a,n) rep(i,0,n){cout<<a[i]<<" ";}cout<<endl;
+#define printInt(a) cout<<a<<"\n";
+#define printStr(a) cout<<a<<"\n";
 ll gcd(ll a, ll b){if (b == 0)return a;return gcd(b, a % b);} //__gcd
 ll lcm(ll a, ll b){return (a/gcd(a,b)*b);}
 ll moduloMultiplication(ll a,ll b,ll mod){ll res = 0;a %= mod;while (b){if (b & 1)res = (res + a) % mod;b >>= 1;}return res;}
 ll powermod(ll x, ll y, ll p){ll res = 1;x = x % p;if (x == 0) return 0;while (y > 0){if (y & 1)res = (res*x) % p;y = y>>1;x = (x*x) % p;}return res;}
-#define setBits(x) builtin_popcount(x)
+#define setBits(x) __builtin_popcount(x)
 #define arraySum(a)  accumulate(a.begin(), a.end(),(ll)0);
 ll binaryToDecimal(string s){
     return stoi(s,0,2);
@@ -43,23 +43,32 @@ bool isPowerOfTwo(int n){if(n==0)return false;return (ceil(log2(n)) == floor(log
 bool isPerfectSquare(ll x){if (x >= 0) {ll sr = sqrt(x);return (sr * sr == x);}return false;}
 
 void solve(){
-    ll n;
-    cin>>n;
-    ll count=0;
-    ll x= 10 -(n%10);
-    while(n!=1){
-        count+=(10-(n%10));
-        n+=(10-(n%10));
-        n/=10;
-    }
-    cout<<count<<endl;
+    ll n,x,y;
+    cin>>n>>x>>y;
+    string s;
+    cin>>s;
+    ll ans=0;
+    // last x digits of the numbers will be zeroes except the (n-y)th one
+    // so change all the zeroes among last x digits , if the position og the digit is not (n-y)
+    // change zero to one
+    rep(i,n-x,n){
+        if(i==n-y-1){
+            if(s[i]!='1'){
+                ans++;
+            }
+        }else{
+            if(s[i]!='0'){
+                ans++;
+            }
+        }
+    }cout<<ans<<endl;
 }
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 
-    ll t;cin>>t;
+    ll t;t=1;
     while (t--){
         solve();
     }

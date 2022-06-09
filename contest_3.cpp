@@ -45,14 +45,21 @@ bool isPerfectSquare(ll x){if (x >= 0) {ll sr = sqrt(x);return (sr * sr == x);}r
 void solve(){
     ll n;
     cin>>n;
-    ll count=0;
-    ll x= 10 -(n%10);
-    while(n!=1){
-        count+=(10-(n%10));
-        n+=(10-(n%10));
-        n/=10;
+    vl a(n),b(n);
+    vl d;
+    rep(i,0,n){
+        cin>>a[i];
     }
-    cout<<count<<endl;
+    rep(i,0,n){
+        cin>>b[i];
+    }
+    d.pb(b[0]-a[0]);
+    rep(i,1,n){
+        d.pb(min(b[i]-a[i],b[i]-b[i-1]));
+    }
+    for(auto i:d){
+        cout<<i<<" ";
+    }cout<<endl;
 }
 int main(){
     ios_base::sync_with_stdio(false);

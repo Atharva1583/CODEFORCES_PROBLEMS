@@ -49,8 +49,8 @@ cmake_ninja_workdir = C$:/Users/Icon/CLionProjects/MY_CP/cmake-build-debug/
 
 build cmake_object_order_depends_target_MY_CP: phony || CMakeFiles/MY_CP.dir
 
-build CMakeFiles/MY_CP.dir/reachable_numbers.cpp.obj: CXX_COMPILER__MY_CP_Debug C$:/Users/Icon/CLionProjects/MY_CP/reachable_numbers.cpp || cmake_object_order_depends_target_MY_CP
-  DEP_FILE = CMakeFiles\MY_CP.dir\reachable_numbers.cpp.obj.d
+build CMakeFiles/MY_CP.dir/remainder.cpp.obj: CXX_COMPILER__MY_CP_Debug C$:/Users/Icon/CLionProjects/MY_CP/remainder.cpp || cmake_object_order_depends_target_MY_CP
+  DEP_FILE = CMakeFiles\MY_CP.dir\remainder.cpp.obj.d
   FLAGS = -g -std=gnu++14
   OBJECT_DIR = CMakeFiles\MY_CP.dir
   OBJECT_FILE_DIR = CMakeFiles\MY_CP.dir
@@ -63,7 +63,7 @@ build CMakeFiles/MY_CP.dir/reachable_numbers.cpp.obj: CXX_COMPILER__MY_CP_Debug 
 #############################################
 # Link the executable MY_CP.exe
 
-build MY_CP.exe: CXX_EXECUTABLE_LINKER__MY_CP_Debug CMakeFiles/MY_CP.dir/reachable_numbers.cpp.obj
+build MY_CP.exe: CXX_EXECUTABLE_LINKER__MY_CP_Debug CMakeFiles/MY_CP.dir/remainder.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\MY_CP.dir

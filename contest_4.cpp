@@ -43,16 +43,45 @@ bool isPowerOfTwo(int n){if(n==0)return false;return (ceil(log2(n)) == floor(log
 bool isPerfectSquare(ll x){if (x >= 0) {ll sr = sqrt(x);return (sr * sr == x);}return false;}
 
 void solve(){
-    ll n;
-    cin>>n;
-    ll count=0;
-    ll x= 10 -(n%10);
-    while(n!=1){
-        count+=(10-(n%10));
-        n+=(10-(n%10));
-        n/=10;
+    ll n,k;
+    cin>>n>>k;
+    string s;
+    cin>>s;
+    ll b=0,w=0;
+    rep(i,0,n){
+        if(s[i]=='B'){
+            b++;
+        }else{
+            w++;
+        }
     }
-    cout<<count<<endl;
+    if(w==n){
+        cout<<k<<endl;
+        return;
+    }
+    vl prefix(n,0);
+    if(s[0]=='W'){
+        prefix[0]=1;
+    }else{
+        prefix[0]=0;
+    }
+    rep(i,1,n){
+        prefix[i]=prefix[i-1];
+        if(s[i]=='W'){
+            prefix[i]+=1;
+        }
+    }
+    ll ans=LONG_LONG_MAX;
+    rep(i,0,n){
+        if(i+k-1 < n){
+            ll x=prefix[i+k-1];
+            if(i-1>=0){
+                x-=prefix[i-1];
+            }
+            ans=min(ans,x);
+        }
+    }
+    cout<<ans<<endl;
 }
 int main(){
     ios_base::sync_with_stdio(false);
